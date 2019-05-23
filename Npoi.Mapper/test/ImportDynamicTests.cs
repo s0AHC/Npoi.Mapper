@@ -37,7 +37,8 @@ namespace test
 
             // Act
             var mapper = new Mapper(workbook);
-            //mapper.Save(new FileStream("dddd.xlsx", FileMode.Create)); // Use this to lookup the column name (like AAB) in Excel...
+            //mapper.Save(new FileStream("dddd.xlsx", FileMode.Create)); 
+            // Use this to lookup the column name (like AAB) in Excel...
             var objs = mapper.Take<dynamic>().ToList();
 
             // Assert

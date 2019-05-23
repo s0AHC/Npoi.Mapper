@@ -16,6 +16,7 @@ namespace test
 
         #region Protected Methods
 
+
         protected static IWorkbook GetSimpleWorkbook(DateTime dateValue, string stringValue)
         {
             var workbook = GetEmptyWorkbook();

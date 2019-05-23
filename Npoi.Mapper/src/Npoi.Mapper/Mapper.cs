@@ -501,6 +501,7 @@ namespace Npoi.Mapper
 
         #region Import
 
+        //System.Func<T> 返回一个由T参数指定类型的值
         private IEnumerable<RowInfo<T>> Take<T>(ISheet sheet, int maxErrorRows, Func<T> objectInitializer = null) where T : class
         {
             if (sheet == null || sheet.PhysicalNumberOfRows < 1)
@@ -511,6 +512,8 @@ namespace Npoi.Mapper
             var firstRowIndex = sheet.FirstRowNum;
             var firstRow = sheet.GetRow(firstRowIndex);
 
+            //typeof(T) System.Type 代表类型的声明: 如Class type, arrary type, value type, generic type defination etc.
+            //括号中中的T就是由上面Mapper.Take<T>转递进来的，本列中是个Excel Sheet对象
             var targetType = typeof(T);
             if (targetType == typeof(object)) // Dynamic type.
             {

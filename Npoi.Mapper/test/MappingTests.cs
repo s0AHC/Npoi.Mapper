@@ -16,7 +16,7 @@ namespace test
         [TestMethod]
         public void ColumnIndexTest()
         {
-            // Prepare
+            // Prepare 空的excel表
             const string str = "aBC";
             var workbook = GetBlankWorkbook();
             var sheet = workbook.GetSheetAt(0);
@@ -26,13 +26,12 @@ namespace test
             sheet.GetRow(0).CreateCell(11).SetCellValue("targetColumn");
             sheet.GetRow(11).CreateCell(11).SetCellValue(str);
 
+            // Act：导入DataContext到上面准备Excle  
             var importer = new Mapper(workbook);
-
-            // Act
+            //Act
             importer.Map<SampleClass>(11, o => o.GeneralProperty);
             var objs = importer.Take<SampleClass>().ToList();
-
-            // Assert
+            // Assert主张
             Assert.IsNotNull(objs);
             Assert.AreEqual(1, objs.Count);
 
